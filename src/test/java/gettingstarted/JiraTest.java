@@ -41,5 +41,18 @@ public class JiraTest {
 		}
 		System.out.println(com.alibaba.fastjson.JSON.toJSON(map.values()));
 	}
+
+	@Test
+	public void testReopen() throws Exception {
+		BasicCredentials creds = new BasicCredentials("chunchun.xu", "123123123aa");
+		JiraClient jira = new JiraClient("http://jira.wwwarehouse.com", creds);
+		Issue.SearchResult searchResult = jira.searchIssues("project = XDW AND issuetype = 生产缺陷 AND text ~ \"【发布商品优化】\" AND reporter in (xiuxiu.chen)","changelog");
+		List<Issue> list = searchResult.issues;
+		Map<String, Assignee> map = new HashMap<>();
+		for (Issue issue : list) {
+			Task task = new Task();
+		}
+		System.out.println(com.alibaba.fastjson.JSON.toJSON(map.values()));
+	}
 }
 
